@@ -1,0 +1,39 @@
+<h1 class="text-center"><%=User.find(@conversation.sender_id).name%>さんと<%=User.find(@conversation.recipient_id).name%>さんの<br>メッセージ</h1>
+<div class="container">
+
+<% if @over_ten %>
+  <%= link_to 'Previous message', '?m=all' %>
+<% end %>
+
+  <% @messages.each do |message| %>
+    <% if message.body.present? %>
+      <div class="item">
+        <div class="content">
+          <div class="header"><strong><%= message.user.name %></strong> <%= message.message_time %></div>
+          <div class="list">
+            <div class="item">
+              <i class="right triangle icon"></i>
+              <%= message.body %> /
+              <% if message.user == current_user %>
+                <%= message.read ? 'Already read' : 'Unread' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+<%= form_with(model: [@conversation, @message]) do |f| %>
+  <div class="field">
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+    <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+  <div>
+    <%= f.submit "Send a message" %>
+  </div>
+  <div>
+  <%= link_to 'Back', user_path(User.find(@conversation.recipient_id)) %>
+  </div>
+<% end %>
+</div>

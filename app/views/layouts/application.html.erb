@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Playground for Baby！</title>
+<%= csrf_meta_tags %>
+<%= csp_meta_tag %>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+  <div id="container">
+    <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class: "#{key}") %>
+    <% end %>
+
+  <header>
+
+    <div class="title"><%= link_to 'Playground for Baby!', playgrounds_path  %></div>
+    <aside id="mainimg"><%= image_tag "/assets/mainimg.jpg" %></aside>
+    <div>
+      <p><img src="/assets/footer logo.jpg" class="footerlogo"></p>
+      </div>
+      <div>
+        <p><img src="/assets/footer.jpg" class="footer1logo"></p>
+        </div>
+  </header>
+  
+
+    <div id="contents">
+      <nav id="menubar">
+        <ul>
+          <li><%= link_to 'Playground List', playgrounds_path  %></li>
+      <% if current_user %>
+        <% if current_user.admin? %>
+          <li><%= link_to 'User List', admin_users_path(current_user.id) %></li>
+        <% end %>
+          <li><%= link_to 'Logout', logout_path, method: :delete,　class: 'nav-link'  %></>
+          <li><%= link_to 'My page', user_path(current_user.id) %></li>
+      <% else %>
+          <li><%= link_to t('Sigin up'), new_user_path %></li>
+          <li><%= link_to t('Login'), new_session_path %></li>
+        </ul>
+      <% end %>
+      </nav>
+    <%= yield %>
+    </div>
+
+    <footer>
+
+<div class="footer">
+  <div class="footerleft"><img src="/assets/name.png"></div>
+    <div class="footerright">  <small class="pr">Copyright© NWENI All Rights Reserved.</small>
+      <span class="pr"> Follow us Twitter Facebook Youtube Instagram</span>
+      <img src="/assets/footer icon.jpg"class="icon"></div>
+</div>
+        </footer>
+  </div>
+<body>

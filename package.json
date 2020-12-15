@@ -1,0 +1,9 @@
+{
+  "name": "everyones_dogrun",
+  "private": true,
+  "dependencies": {
+    "boostrap": "^2.0.0",
+    "bootstrap": "^4.5.3",
+    "jquery": "^3.4.1"
+  }
+}

@@ -1,0 +1,2 @@
+module MyakachansHelper
+end

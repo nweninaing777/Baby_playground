@@ -1,0 +1,28 @@
+<div class="container">
+
+<p>
+  <%= image_tag @myakachan.image.url, size: '500x500' %>
+</p>
+
+<p>
+  <strong><%= t('name') %>　:</strong>
+  <%= @myakachan.name%>
+</p>
+
+
+<p>
+  <strong><%= t('age') %>　:</strong>
+  <%= @myakachan.age%>
+</p>
+
+<p>
+  <strong><%= t('sex') %>　:</strong>
+  <%= @myakachan.gender%>
+</p>
+
+<% if log_in? && @myakachan.user_id == current_user.id %>
+<%= link_to 'Edit my baby', edit_myakachan_path(@myakachan) %> |
+<% end %>
+<%= link_to 'Return to profile screen', user_path(@myakachan.user_id) %>
+
+</div>

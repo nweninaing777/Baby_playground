@@ -1,0 +1,110 @@
+<td class="container">
+  <div>
+  <% if log_in? && @user.id == current_user.id %>
+      <h2>My Page</h2>
+  <% else %>
+      <h3>Profile</h3>
+  <% end%>
+  </div>
+
+<table>
+  <tbody>
+    <tr>
+  <% if @user.image? %>
+      <td><%= image_tag @user.image.url, size: '200x200' %></td>
+  <% else %>
+      <td><%= image_tag "/assets/default.jpg", size: '100x100' %></td>
+  <% end %>
+    </tr>
+      <tr><%= @user.name %></tr>
+      <tr>コメント: <%= @user.profile %></tr>
+  <% if log_in? && @user.id == current_user.id %>
+      <td><%= link_to 'Edit profile', edit_user_path(@user) %></td>
+  <% end%>
+  <% if log_in? && @user.id != current_user.id %>
+      <td><%= link_to 'To send message', conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post %></<td>
+      <td><%= render 'follow_form', user: @user %></td>
+  <% end%>
+      <td><%= link_to "following", following_user_path(@user) %></td>
+      <td><%=  @user.following.count %></td>
+      <td><%= link_to "followers", followers_user_path(@user) %></td>
+      <td><%=  @user.followers.count %></td>
+</tbody>
+</table>
+
+  <h2>mybaby</h2>
+  <table>
+      <thead>
+        <tr>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+    <tbody>
+      <% @myakachans.each do |myakachan| %>
+        <tr>
+          <td><%= image_tag myakachan.image.url, size: '200x200' %></td>
+          <td><%= myakachan.name %></td>
+          <td><%= link_to 'Details', myakachan %></td>
+        <% if log_in? && myakachan.user_id == current_user.id %>
+          <td><%= link_to 'Edit', edit_myakachan_path(myakachan) %></td>
+          <td><%= link_to 'Delete', myakachan_path(myakachan.id), method: :delete, data: { confirm: 'Are you sure delete?' } %></td>
+        <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <% if log_in? && @user.id == current_user.id %>
+    <h3>To register my baby</h3>
+    <%= form_with model: @myakachan, local: true  do |f| %>
+    <%= f.hidden_field :user_id, value: @user.id %>
+
+    <% if @myakachan.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+        <% @myakachan.errors.full_messages.each do |message| %>
+          <h2><%= message %></h2>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <div class="">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+
+
+  <div class="field">
+    <%= f.label :age %>
+    <%= f.number_field :age %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender %>
+    <%= f.radio_button :gender, :male %>boy
+    <%= f.radio_button :gender, :female %>girl
+  </div>
+
+  <div class="field">
+    <%= f.label :image %>（必須）<br />
+    <%= image_tag(@myakachan.image.url) if @myakachan.image && @myakachan.image.url %>
+    <%= f.file_field :image %>
+    <%#= input type="file",class="sell-upload-drop-file",multiple="multiple",name="image[]",style="display: none"%>
+    <%= f.hidden_field :image_cache %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+    <% end %>
+  <% end %>
+
+  <div class="actions">
+    <% if log_in? && @user.id == current_user.id %>
+      <%= link_to "Playground create screen", new_playground_path, class:"btn btn-primary" %>
+    <% end %>
+  <%= link_to 'Return to playground',  playgrounds_path, class:"btn btn-primary" %>
+  </div>

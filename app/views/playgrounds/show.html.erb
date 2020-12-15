@@ -1,0 +1,126 @@
+<div class="container">
+  <div class="row">
+
+  <h2>Playground information</h2>
+
+  <div class="list">
+  <div class="card-img"><%= image_tag @playground.image.url, width: "500px" %></div>
+  </div>
+
+  <p>
+  <strong><%= t('playground_name') %> :</strong>
+  <%= @playground.name %>
+  </p>
+
+  <p>
+  <strong><%= t('address') %> :</strong>
+  <%= @playground.address %>
+  </p>
+
+  <p>
+  <strong><%= t('business hours') %> :</strong>
+  <%= @playground.opening_at.hour%> :
+  <%= @playground.opening_at.min %> ~
+  <%= @playground.closing_at.hour%> :
+  <%= @playground.closing_at.min%>
+  </p>
+
+  <p>
+    <strong><%= t('price') %> :</strong>
+    <%= @playground.price %>
+  </p>
+
+  <p>
+    <strong><%= t('breadth') %> :</strong>
+    <%= @playground.breadth %>
+  </p>
+
+  <p>
+    <strong><%= t('other') %> :</strong>
+    <%= @playground.other %>
+  </p>
+
+  <p>
+    <%= link_to 'Playground User' ,user_path(@playground.user) %>
+      <% if @playground.user.image? %>
+        <%= image_tag  @playground.user.image.url,size: '100x100' %>
+      <% else %>
+        <%= image_tag "/assets/default.jpg" %>
+      <% end %>
+      <% if log_in? && @playground.user_id == current_user.id %>
+        <%= link_to 'Edit Playground information', edit_playground_path(@playground) %>
+      <% end %>
+  </p>
+
+
+  <table>
+  <h2>Review List</h2>
+    <thead>
+      <tr>
+        <th><%= t('title') %></th>
+        <th><%= t('content') %> </th>
+        <th><%= t('image') %> </th>
+        <th><%= t('poster') %> </th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.title %></td>
+          <td><%= post.content %></td>
+          <% if post.image.url present? %>
+          <td><%= image_tag post.image.url,size: '200x200' %></td>
+          <% end %>
+          <td><%= link_to t('poster'), user_path(post.user_id) %></td>
+          <td><%= link_to t('Details'), post %></td>
+          <% if log_in? && post.user_id == current_user.id %>
+          <td><%= link_to t('Edit'), edit_post_path(post) %></td>
+          <td><%= link_to t('Delete'), post, method: :delete, data: { confirm: 'Are you sure delete?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <% if log_in? %>
+  <h3>To post Review</h3>
+  <%= form_with model: @post, local: true  do |f| %>
+  <%= f.hidden_field :playground_id, value: @playground.id %>
+  <%= f.hidden_field :user_id, value: @current_user.id %>
+    <% if @post.errors.any? %>
+      <div id="error_explanation">
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <h2><%= message %></h2>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+  </div>
+
+  <div class="field">
+    <%= f.label :画像 %>
+    <%= image_tag(@post.image.url) if @post.image && @post.image.url %>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+    <% end %>
+  <% end %>
+
+
+
+<%= link_to 'Return to Playground lists', playgrounds_path, class:"btn btn-primary" %>
+      </div>
+    </div>

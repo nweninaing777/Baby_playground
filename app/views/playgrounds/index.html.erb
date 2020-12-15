@@ -1,0 +1,30 @@
+<h2>playground Lists</h2>
+
+<%= search_form_for @q do |f| %>
+    <h3><%= f.label :playground, "Search by address" %>
+    <%= f.search_field :address_cont %>
+    <%= f.submit t('search') %>
+    </h3>
+<% end %>
+
+<% if log_in? %>
+<h4><%= link_to t('playground register'), new_playground_path %></h4>
+<% end %>
+
+<div class="main">
+<% @playgrounds.each do |playground| %>
+  <section class="card">
+    <%= image_tag playground.image.url,class:"card-img"%>
+      <div class="card-content">
+      <h1 class="card-title"><%= playground.name %></h1>
+      <p class="card-text"><%= playground.address %></p>
+    <div class="card-link">
+        <%= link_to t('Details'), playground_path(playground) %>
+        <% if log_in? && playground.user.id == current_user.id %>
+        <%= link_to t('Edit'), edit_playground_path(playground) %>
+        <%= link_to 'Delete', playground_path(playground), method: :delete, data: { confirm: 'Are you sure delete?' }  %>
+        <% end %>
+    </div>
+  </section>
+<% end %>
+</div>

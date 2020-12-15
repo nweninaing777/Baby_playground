@@ -1,0 +1,7 @@
+<% @user.following.each do |user| %>
+  <td><%= user.name %> </td>
+    <% if user.image? %>
+  <td><%= link_to image_tag(user.image.url, size: '100x100'), user_path(user)  %> </td>
+    <% end%>
+<% end %>
+  <br><%= link_to 'Return', @user %>
