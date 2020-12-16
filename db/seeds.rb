@@ -2,7 +2,7 @@ User.create!(
   [
     {
       name: "Aung",
-      email: "aung@gmail.com",
+      email: "aungaung@gmail.com",
       password: "1111",
       password_confirmation: "1111",
       image: open("#{Rails.root}/db/seed_fixtures/Img04-300x300.png"),
@@ -10,7 +10,7 @@ User.create!(
     },
     {
       name: "Daw Su",
-      email: "su@gmail.com",
+      email: "susu@gmail.com",
       password: "1111",
       password_confirmation: "1111",
       image: open("#{Rails.root}/db/seed_fixtures/Img05-300x300.png"),
@@ -18,7 +18,7 @@ User.create!(
     },
     {
       name: "Mya",
-      email: "mya@gmail.com",
+      email: "myamya@gmail.com",
       password: "1111",
       password_confirmation: "1111",
       image: open("#{Rails.root}/db/seed_fixtures/Img06-300x300.png"),
@@ -26,7 +26,7 @@ User.create!(
     },
     {
       name: "Aye",
-      email: "aye@gmail.com",
+      email: "ayeaye@gmail.com",
       password: "1111",
       password_confirmation: "1111",
       image: open("#{Rails.root}/db/seed_fixtures/Img07-300x300.png"),
@@ -34,21 +34,21 @@ User.create!(
     },
     {
       name: "Nu",
-      email: "nu@gmail.com",
+      email: "nunu@gmail.com",
       password: "1111",
       password_confirmation: "1111",
       image: open("#{Rails.root}/db/seed_fixtures/Img09-300x300.png"),
     },
     {
       name: "Ba",
-      email: "ba@gmail.com",
+      email: "baba@gmail.com",
       password: "1111",
       password_confirmation: "1111",
       image: open("#{Rails.root}/db/seed_fixtures/Img08300x300.png"),
     },
     {
       name: "Maung",
-      email: "mg@gmail.com",
+      email: "mgmg@gmail.com",
       password: "1111",
       password_confirmation: "1111",
       image: open("#{Rails.root}/db/seed_fixtures/Img-300x300.png"),
