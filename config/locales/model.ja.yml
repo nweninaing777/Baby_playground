@@ -1,9 +1,9 @@
 ja:
   activerecord:
     models:
-      post: 口コミ
-      mydog: 愛犬
-      dogrun: ドッグラン
+      post: レビュー
+      myakachan: 子供
+      playground: プレイグランド
       user: ユーザー
       label: ラベル
     attributes:
@@ -17,7 +17,7 @@ ja:
         label: ラベル
         # high: 高
         # medium: 中
-        # low: 低 
+        # low: 低
       label:
         label_name: ラベル名
       user:
@@ -31,14 +31,14 @@ ja:
         password: パスワード
         password_confirmation: 確認用パスワード
         remember_me: ログインを記憶
-      mydog:
+      myakachan:
         name: 名前
-        breed: 犬種
+
         age: 年齢
         gender: 性別
         image: 写真
-      dogrun:
-        dogrun_name: 名前
+      myakachan:
+        playground_name: 名前
         address: 住所
         business_hours: 営業時間
         price: 利用料金
@@ -48,7 +48,3 @@ ja:
       post:
         title: タイトル
         content: 内容
-
-
-
-        

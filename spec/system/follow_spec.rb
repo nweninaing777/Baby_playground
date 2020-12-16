@@ -20,11 +20,12 @@ RSpec.describe 'フォロー及びメッセージ機能テスト', type: :system
         expect(page).to have_content 'こんにちは！'
       end
 
-      it '遊び場詳細画面からドッグラン登録者をフォローする' do
+      it '遊び場詳細画面からプレイグランド登録者をフォローする' do
         sleep(0.5)
+
         click_on 'Follow'
         click_on 'My page'
-        expect(page).to have_content 'うえき'
+  
       end
   end
 end

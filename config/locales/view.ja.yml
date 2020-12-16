@@ -1,6 +1,6 @@
 ja:
   neme: 名前
-  dogrun_neme: 名前
+  playground_neme: 名前
   address: 住所
   task: タスク
   user: ユーザー
@@ -40,15 +40,13 @@ ja:
   sigin_up: サインアップ
   task_count: タスク数
   login: ログイン
-  # high: 高s
-  # medium: 中
-  # low: 低 
+
   not started yet: 未着手
   Done: 完了
   WIP: 作業中
-  Sing_up: 新規登録
-  log_in: ログイン
-  log_out: ログアウト
+  Signup: 新規登録
+  Log in: ログイン
+  Logout: ログアウト
   user:
   title: タイトル
   name: 名前
@@ -58,11 +56,11 @@ ja:
   male: 男の子
   female: 女の子
   sex: 性別
-  breed: 犬種
+
   password: パスワード
   password_confirmation: 確認用パスワード
   remember_me: ログインを記憶
-  dogrun_name : ドッグラン名
+  playground_name : ドッグラン名
   title: タイトル
   name: 名前
   address: 住所
@@ -71,8 +69,6 @@ ja:
   breadth: 広さ
   other: その他
   image: 写真
-  poster: 口コミ登録者
+  poster: レビュー登録者
   content: 内容
   business hours: 営業時間
-
-  
