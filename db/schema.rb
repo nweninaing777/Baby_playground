@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_12_08_065852) do
 
   # These are extensions that must be enabled in order to support this database
-enable_extension "plpgsql"
+  enable_extension "plpgsql"
 
   create_table "conversations", force: :cascade do |t|
     t.integer "sender_id"
@@ -35,7 +35,8 @@ enable_extension "plpgsql"
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
- create_table "myakachans", force: :cascade do |t|
+
+  create_table "myakachans", force: :cascade do |t|
     t.integer "user_id"
     t.string "name", null: false
     t.integer "age", null: false
