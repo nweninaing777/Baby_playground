@@ -40,7 +40,7 @@
           <li><%= link_to 'Logout', logout_path, method: :delete,　class: 'nav-link'  %></>
           <li><%= link_to 'My page', user_path(current_user.id) %></li>
       <% else %>
-          <li><%= link_to t('Sigin up'), new_user_path %></li>
+          <li><%= link_to t('Sign up'), new_user_path %></li>
           <li><%= link_to t('Login'), new_session_path %></li>
         </ul>
       <% end %>
