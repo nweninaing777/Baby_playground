@@ -9,8 +9,8 @@ RSpec.describe 'マイ赤ちゃん新規登録テスト', type: :system do
    click_on 'Log in'
    click_on 'My page'
  end
- context 'マイドッグ新規登録成功' do
-   it '作成済みのマイドッグが表示されること' do
+ context 'マイ赤ちゃん新規登録成功' do
+   it '作成済みのマイ赤ちゃんが表示されること' do
      expect(page).to have_content 'ミルク'
    end
 
